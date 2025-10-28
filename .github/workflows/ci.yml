@@ -1,1 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  sanity-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Print hello and repo info
+        run: |
+          echo "CI sanity check — this run will always succeed"
+          echo "Current branch: $GITHUB_REF"
+          ls -la
+
+      - name: Pass step
+        run: |
+          echo "success"
 
